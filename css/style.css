@@ -299,6 +299,13 @@ ul {
   transition: all var(--transition);
 }
 
+.hero__social-link svg,
+.hero__social-link i {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
 .hero__social-link:hover {
   color: var(--clr-primary);
   border-color: var(--clr-primary);
@@ -1094,7 +1101,7 @@ ul {
 .contact__info {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xl);
+  gap: var(--space-md);
 }
 
 .contact__card {
@@ -1102,7 +1109,7 @@ ul {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: var(--space-2xl);
+  padding: 1.15rem var(--space-lg);
   background: var(--clr-surface);
   border: 1px solid var(--clr-border-light);
   border-radius: var(--radius-lg);
@@ -1112,22 +1119,23 @@ ul {
 .contact__card:hover {
   border-color: var(--clr-primary-ring);
   box-shadow: var(--shadow-md);
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 }
 
 .contact__card svg,
 .contact__card > i {
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   color: var(--clr-primary);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-xs);
+  flex-shrink: 0;
 }
 
 .contact__card h3 {
   font-size: var(--fs-base);
   font-weight: 600;
   color: var(--clr-dark);
-  margin-bottom: var(--space-xs);
+  margin-bottom: 2px;
 }
 
 .contact__card p {
@@ -1532,11 +1540,9 @@ ul {
   }
 
   .contact__info {
-    flex-direction: row;
-  }
-
-  .contact__info .contact__card {
-    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
   }
 }
 
@@ -1625,7 +1631,7 @@ ul {
 
   /* Contact */
   .contact__info {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 
   .form__submit {
