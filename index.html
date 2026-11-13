@@ -483,17 +483,59 @@
           <h2 class="section__title">Contact Me</h2>
           <p class="section__description">I'm always open to discussing new opportunities, projects, or internships. Feel free to reach out!</p>
         </div>
-        <div class="contact__grid">
-          <a href="mailto:raeidislam95@gmail.com" class="contact__card reveal">
-            <i data-lucide="mail"></i>
-            <h3>Email</h3>
-            <p>raeidislam95@gmail.com</p>
-          </a>
-          <a href="https://www.linkedin.com/in/md-raeid-islam-1a800a348" target="_blank" rel="noopener noreferrer" class="contact__card reveal">
-            <i data-lucide="linkedin"></i>
-            <h3>LinkedIn</h3>
-            <p>Md Raeid Islam</p>
-          </a>
+        <div class="contact__wrapper">
+          <!-- Contact Info Cards -->
+          <div class="contact__info reveal">
+            <a href="mailto:raeidislam95@gmail.com" class="contact__card">
+              <i data-lucide="mail"></i>
+              <h3>Email</h3>
+              <p>raeidislam95@gmail.com</p>
+            </a>
+            <a href="https://www.linkedin.com/in/md-raeid-islam-1a800a348" target="_blank" rel="noopener noreferrer" class="contact__card">
+              <i data-lucide="linkedin"></i>
+              <h3>LinkedIn</h3>
+              <p>Md Raeid Islam</p>
+            </a>
+          </div>
+          <!-- Contact Form -->
+          <form class="contact__form reveal" action="https://formsubmit.co/raeidislam95@gmail.com" method="POST">
+            <!-- FormSubmit config -->
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_subject" value="New Portfolio Contact Message!">
+            <input type="text" name="_honey" style="display:none">
+            <div class="form__group">
+              <label for="name" class="form__label">Name</label>
+              <div class="form__input-wrapper">
+                <i data-lucide="user"></i>
+                <input type="text" id="name" name="name" class="form__input" placeholder="Your Name" autocomplete="name" required>
+              </div>
+            </div>
+            <div class="form__group">
+              <label for="email" class="form__label">Email</label>
+              <div class="form__input-wrapper">
+                <i data-lucide="at-sign"></i>
+                <input type="email" id="email" name="email" class="form__input" placeholder="your@email.com" autocomplete="email" required>
+              </div>
+            </div>
+            <div class="form__group">
+              <label for="subject" class="form__label">Subject</label>
+              <div class="form__input-wrapper">
+                <i data-lucide="type"></i>
+                <input type="text" id="subject" name="subject" class="form__input" placeholder="Subject" required>
+              </div>
+            </div>
+            <div class="form__group">
+              <label for="message" class="form__label">Message</label>
+              <div class="form__input-wrapper form__input-wrapper--textarea">
+                <i data-lucide="message-square"></i>
+                <textarea id="message" name="message" class="form__input form__textarea" placeholder="Write your message here..." rows="5" required></textarea>
+              </div>
+            </div>
+            <button type="submit" class="btn btn--primary form__submit">
+              <i data-lucide="send"></i> Send Message
+            </button>
+          </form>
         </div>
       </div>
     </section>
