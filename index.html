@@ -19,6 +19,21 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
 
+  <!-- Theme Initialization (prevents flash of wrong theme) -->
+  <script>
+    (function () {
+      try {
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -37,10 +52,16 @@
           <li><a href="#contact" class="navbar__link">Contact</a></li>
         </ul>
       </nav>
-      <button class="navbar__toggle" id="navToggle" aria-label="Toggle navigation">
-        <i data-lucide="menu" class="navbar__toggle-open"></i>
-        <i data-lucide="x" class="navbar__toggle-close"></i>
-      </button>
+      <div class="navbar__actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Switch to dark theme" title="Switch theme">
+          <i data-lucide="moon" class="theme-toggle__moon"></i>
+          <i data-lucide="sun" class="theme-toggle__sun"></i>
+        </button>
+        <button class="navbar__toggle" id="navToggle" aria-label="Toggle navigation">
+          <i data-lucide="menu" class="navbar__toggle-open"></i>
+          <i data-lucide="x" class="navbar__toggle-close"></i>
+        </button>
+      </div>
     </div>
   </header>
 

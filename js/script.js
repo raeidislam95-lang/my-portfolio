@@ -9,6 +9,47 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ----------------------------------------------------------
+     Theme Toggle (Dark / Light Mode)
+     ---------------------------------------------------------- */
+  const themeToggle = document.getElementById('themeToggle');
+  const root = document.documentElement;
+
+  function setTheme(theme) {
+    root.setAttribute('data-theme', theme);
+    try {
+      localStorage.setItem('theme', theme);
+    } catch (e) {}
+
+    if (themeToggle) {
+      const isDark = theme === 'dark';
+      themeToggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+      themeToggle.setAttribute('title', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+    }
+  }
+
+  if (themeToggle) {
+    // Sync initial state
+    const currentTheme = root.getAttribute('data-theme') ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    setTheme(currentTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const activeTheme = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      const nextTheme = activeTheme === 'dark' ? 'light' : 'dark';
+      setTheme(nextTheme);
+    });
+  }
+
+  // Listen for OS theme changes if user hasn't set explicit preference
+  try {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (!localStorage.getItem('theme')) {
+        setTheme(e.matches ? 'dark' : 'light');
+      }
+    });
+  } catch (e) {}
+
+  /* ----------------------------------------------------------
      Mobile Navigation Toggle
      ---------------------------------------------------------- */
   const navToggle = document.getElementById('navToggle');
@@ -32,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Close menu on outside click
     document.addEventListener('click', (e) => {
-      if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+      if (!navToggle.contains(e.target) && !navMenu.contains(e.target) && !e.target.closest('#themeToggle')) {
         navMenu.classList.remove('open');
         navToggle.setAttribute('aria-expanded', 'false');
       }
